@@ -1,2 +1,2 @@
-# Game
-Programming project
+# Игра "RoadRacers" на MonoGame
+Проект по программированию 2 семестр ИРИТ-РТФ УрФУ
