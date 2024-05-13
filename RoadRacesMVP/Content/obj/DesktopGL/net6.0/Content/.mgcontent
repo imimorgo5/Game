@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/../../../../../../../../Downloads/RoadRacesSprites/Button.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/GameBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/MenuBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Fonts/File.spritefont</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/Car.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Sprites/Button.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>Fonts/Font</File>
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
