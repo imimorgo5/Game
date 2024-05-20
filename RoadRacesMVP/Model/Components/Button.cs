@@ -11,9 +11,9 @@ namespace RoadRacesMVP
         public int ImageId { get; set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public Vector2 Position { get; set; }
-        public ActionType ActionType { get; set; }
-        public string Text { get; set; }
+        public Vector2 Position { get; private set; }
+        public ActionType ActionType { get; private set; }
+        public string Text { get; private set; }
         public double Count { get; set; }
         public bool IsHover { get; set; }
         public Rectangle Rectangle{ get => new((int)Position.X, (int)Position.Y, Width, Height); }

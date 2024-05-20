@@ -7,11 +7,19 @@ namespace RoadRacesMVP
 {
     public enum ActionType
     {
-        newGame,
-        loadGame,
+        startGame,
         quitGame,
-        settings,
+        settingsFromMenu,
+        settingsFromPause,
         quitToMenu,
-        scoreCount
+        pause,
+        resetRecordScore,
+        increaseVolume,
+        decreaseVolume,
+        increaseDifficult,
+        decreaseDifficult,
+        scoreCount,
+        continueGame,
+        rules
     }
 }

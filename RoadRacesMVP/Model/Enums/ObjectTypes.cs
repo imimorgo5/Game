@@ -2,7 +2,13 @@
 {
     car,
     wall,
-    button,
+    bigButton,
+    smallButton,
     counter,
-    player
+    player,
+    coin,
+    braker,
+    offColisionObj,
+    brokeSteeringObj,
+    bomb
 }

@@ -8,9 +8,11 @@ namespace RoadRacesMVP
 {
     public interface IState
     {
-        List<IComponent> Components { get; set; }
+        List<IComponent> Components { get; }
+        Dictionary<int, IObject> Objects { get; }
         event EventHandler<GameplayEventArgs> UpdatedState;
 
+        void ChangePlayerSpeed(Direction dir);
         void Initialize();
         void Update();
     }

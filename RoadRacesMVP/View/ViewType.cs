@@ -10,6 +10,10 @@ namespace RoadRacesMVP
     public enum ViewType
     {
         GameStateView,
-        MainMenuStateView
+        MainMenuStateView,
+        PauseStateView,
+        GameOverStateView,
+        SettingsStateView,
+        RulesStateView
     }
 }

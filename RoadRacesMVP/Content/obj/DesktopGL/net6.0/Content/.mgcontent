@@ -4,17 +4,49 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/../../../../../../../../Downloads/RoadRacesSprites/Button.png</File>
     <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/GameBackground.png</File>
-    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/MenuBackground.png</File>
-    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Fonts/File.spritefont</File>
-    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/Car.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/GameOverBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/MainMenuBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/PauseBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/RulesBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Backgrounds/SettingsBackground.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Fonts/Font35.spritefont</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Fonts/Font45.spritefont</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/BigButton.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/BlueCar.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/Bomb.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/Braker.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/BrokeSteeringObj.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/Coin.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/GreenCar.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/OffColisionObj.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/OrangeCar.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/PinkCar.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/PlayerCar.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/SmallButton.png</File>
+    <File>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Sprites/YellowCar.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>Sprites/Button.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File>Fonts/Font</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

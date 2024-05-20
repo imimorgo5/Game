@@ -7,7 +7,8 @@ namespace RoadRacesMVP
 {
     public interface ISolid
     {
-        RectangleCollider Collider { get; set; }
+        bool IsColision { get; }
+        RectangleCollider Collider { get; }
         void MoveCollider(Vector2 newPos);
     }
 }

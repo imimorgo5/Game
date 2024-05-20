@@ -18,7 +18,7 @@ namespace RoadRacesMVP
         }
 
         public abstract void Update();
-        public abstract void Draw(SpriteBatch spriteBatch, Dictionary<int, Texture2D> textures, Dictionary<int, Texture2D> backgrounds, SpriteFont font);
+        public abstract void Draw(SpriteBatch spriteBatch, Dictionary<int, List<Texture2D>> textures, Dictionary<int, Texture2D> backgrounds, SpriteFont font45, SpriteFont font35);
         public abstract void LoadGameCycleParameters(List<IComponent> components, Dictionary<int, IObject> objects, Vector2 POVShift, Vector2 positionOffset);
     }
 }

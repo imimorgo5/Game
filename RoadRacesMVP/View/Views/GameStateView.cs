@@ -4,45 +4,51 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace RoadRacesMVP
 {
     public class GameStateView : StateView
     {
-        public MouseState CurrentMouse { get; set; }
-        public MouseState PreviousMouse { get; set; }
+        private MouseState CurrentMouse { get; set; }
+        private MouseState PreviousMouse { get; set; }
 
-        public Dictionary<int, IObject> Objects = new Dictionary<int, IObject>();
-        public List<IComponent> StateComponents = new List<IComponent>();
-        public Color color;
-        public Vector2 PositionOffset = Vector2.Zero;
+        private Dictionary<int, IObject> Objects = new();
+        private List<IComponent> StateComponents = new();
+        private Color Colour;
+        private Vector2 PositionOffset = Vector2.Zero;
 
         public override event EventHandler<ActionType> ButtonClicked = delegate { };
         public override event EventHandler<Direction> PlayerSpeedChanged = delegate { };
 
         public GameStateView(Vector2 visualShift) : base(visualShift) { }
 
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<int, Texture2D> textures, Dictionary<int, Texture2D> backgrounds, SpriteFont font)
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<int, List<Texture2D>> textures, Dictionary<int, Texture2D> backgrounds, SpriteFont font45, SpriteFont font35)
         {
             spriteBatch.Draw(backgrounds[(byte)ViewType.GameStateView], new Vector2(0, VisualShift.Y), Color.White);
             spriteBatch.Draw(backgrounds[(byte)ViewType.GameStateView], new Vector2(0, VisualShift.Y - 1080), Color.White);
 
             foreach (var obj in Objects.Values)
-                if (obj.ImageId != (byte)ObjectTypes.wall)
-                    spriteBatch.Draw(textures[obj.ImageId], new Vector2(obj.Position.X + VisualShift.X, obj.Position.Y - PositionOffset.Y), Color.White);
+            {
+                if (textures[obj.ImageId].Count != 0)
+                {
+                    Colour = (obj is Player player && (player.IsColision == false || player.IsReverseSteering)) ? Color.Gray : Color.White;
+                    spriteBatch.Draw(textures[obj.ImageId][obj.ImageNumber], new Vector2(obj.Position.X + VisualShift.X, obj.Position.Y - PositionOffset.Y), Colour);
+                }
+            }
 
             foreach (var c in StateComponents)
             {
-                color = c.IsHover ? color = Color.Gray : Color.White;                
-                spriteBatch.Draw(textures[c.ImageId], c.Rectangle, color);
+                Colour = c.IsHover ? Colour = Color.Gray : Color.White;                
+                spriteBatch.Draw(textures[c.ImageId].First(), c.Rectangle, Colour);
 
                 if (!string.IsNullOrEmpty(c.Text))
                 {
-                    var x = c.Rectangle.X + (c.Rectangle.Width / 2) - (font.MeasureString(c.Text).X / 2);
-                    var y = c.Rectangle.Y + (c.Rectangle.Height / 2) - (font.MeasureString(c.Text).Y / 2);
+                    var x = c.Rectangle.X + (c.Rectangle.Width / 2) - (font35.MeasureString(c.Text).X / 2);
+                    var y = c.Rectangle.Y + (c.Rectangle.Height / 2) - (font35.MeasureString(c.Text).Y / 2);
 
-                    spriteBatch.DrawString(font, c.Text, new Vector2(x, y), Color.Black);
+                    spriteBatch.DrawString(font35, c.Text, new Vector2(x, y), Color.Black);
                 }
             }
         }
@@ -56,20 +62,14 @@ namespace RoadRacesMVP
                 switch (k)
                 {
                     case Keys.D:
-                        {
-                            PlayerSpeedChanged.Invoke(this, Direction.right);
-                            break;
-                        }
+                        PlayerSpeedChanged.Invoke(this, Direction.right);
+                        break;
                     case Keys.A:
-                        {
-                            PlayerSpeedChanged.Invoke(this, Direction.left);
-                            break;
-                        }
+                        PlayerSpeedChanged.Invoke(this, Direction.left);
+                        break;
                     case Keys.Escape:
-                        {
-                            ButtonClicked.Invoke(this, ActionType.quitGame);
-                            break;
-                        }
+                        ButtonClicked.Invoke(this, ActionType.pause);
+                        break;
                 }
             }
 
@@ -85,7 +85,10 @@ namespace RoadRacesMVP
                     {
                         c.IsHover = true;
                         if (CurrentMouse.LeftButton == ButtonState.Released && PreviousMouse.LeftButton == ButtonState.Pressed)
+                        {
                             ButtonClicked.Invoke(this, c.ActionType);
+                            break;
+                        }
                     }
                     else
                         c.IsHover = false;
@@ -97,8 +100,8 @@ namespace RoadRacesMVP
         {
             StateComponents = components;
             Objects = objects;
-            VisualShift = new Vector2(VisualShift.X + POVShift.X, (VisualShift.Y + POVShift.Y) % 1080);
-            PositionOffset = new Vector2(PositionOffset.X, (PositionOffset.Y + positionOffset.Y) % 1080);
+            VisualShift = new(VisualShift.X + POVShift.X, (VisualShift.Y + POVShift.Y) % 1080);
+            PositionOffset = positionOffset;
         }
     }
 }

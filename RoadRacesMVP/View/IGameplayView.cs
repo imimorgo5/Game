@@ -8,7 +8,7 @@ namespace RoadRacesMVP
 {
     public interface IGameplayView
     {
-        StateView CurrentStateView { get; set; }
+        StateView CurrentStateView { get; }
 
         event EventHandler CycleFinished;
 

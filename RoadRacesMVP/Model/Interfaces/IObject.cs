@@ -8,12 +8,17 @@ namespace RoadRacesMVP
 {   public interface IObject
     {
         int ImageId { get; set; }
+        int ImageNumber { get; set; }
 
-        Vector2 Position { get; set; }
+        Vector2 Position { get; }
+        RectangleCollider Collider { get; }
 
         Vector2 Speed { get; set; }
 
-        void Update(Vector2 offset);
+        int Width { get; }
+        int Height { get; }
+
+        void Update(Vector2 offset, HashSet<IObject> objects);
 
         void Move(Vector2 pos);
     }
