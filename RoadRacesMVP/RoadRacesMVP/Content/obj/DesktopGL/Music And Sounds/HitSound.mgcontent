@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/Music And Sounds/HitSound.wav</SourceFile>
+  <SourceTime>2024-05-11T15:23:31.9732083+05:00</SourceTime>
+  <DestFile>C:/Users/User/OneDrive - УрФУ/Desktop/Files/УрФУ/Программирование 2 сем/RoadRacesMVP/RoadRacesMVP/Content/bin/DesktopGL/Music And Sounds/HitSound.xnb</DestFile>
+  <DestTime>2024-05-25T18:08:53.457576+05:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T16:44:56+05:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
