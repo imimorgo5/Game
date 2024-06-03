@@ -8,7 +8,7 @@ namespace RoadRacesMVP
 {   public interface IObject
     {
         int ImageId { get; set; }
-        int ImageNumber { get; set; }
+        int ImageNumber { get; }
 
         Vector2 Position { get; }
         RectangleCollider Collider { get; }

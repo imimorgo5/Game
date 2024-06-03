@@ -11,44 +11,44 @@ namespace RoadRacesMVP
 {
     public class GameStateView : StateView
     {
-        private MouseState CurrentMouse { get; set; }
-        private MouseState PreviousMouse { get; set; }
-
         private Dictionary<int, IObject> Objects = new();
         private List<IComponent> StateComponents = new();
-        private Color Сolour;
         private Vector2 PositionOffset = Vector2.Zero;
 
         public override event EventHandler<ActionType> ButtonClicked = delegate { };
         public override event EventHandler<Direction> PlayerSpeedChanged = delegate { };
 
-        public GameStateView(Vector2 visualShift) : base(visualShift) { }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<int, List<Texture2D>> textures, Dictionary<int, Texture2D> backgrounds, SpriteFont font45, SpriteFont font35)
+        public GameStateView(Vector2 visualShift) : base(visualShift) 
         {
-            spriteBatch.Draw(backgrounds[(byte)ViewType.GameStateView], new Vector2(0, VisualShift.Y), Color.White);
-            spriteBatch.Draw(backgrounds[(byte)ViewType.GameStateView], new Vector2(0, VisualShift.Y - GameConstants.SCREENHEIGHT), Color.White);
+            FontSize = FontSize.Size35;
+            ViewType = ViewType.GameStateView;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<int, List<Texture2D>> textures, Dictionary<int, Texture2D> backgrounds, Dictionary<int, SpriteFont> fonts)
+        {
+            spriteBatch.Draw(backgrounds[(byte)ViewType], new Vector2(0, VisualShift.Y), Color.White);
+            spriteBatch.Draw(backgrounds[(byte)ViewType], new Vector2(0, VisualShift.Y - ScreenSize.ScreenHeight), Color.White);
 
             foreach (var obj in Objects.Values)
             {
                 if (textures[obj.ImageId].Count != 0)
                 {
-                    Сolour = (obj is Player player && (player.IsColision == false || player.IsReverseSteering)) ? Color.Gray : Color.White;
-                    spriteBatch.Draw(textures[obj.ImageId][obj.ImageNumber], new Vector2(obj.Position.X + VisualShift.X, obj.Position.Y - PositionOffset.Y), Сolour);
+                    Color = (obj is Player player && (player.IsColision == false || player.IsReverseSteering)) ? Color.Gray : Color.White;
+                    spriteBatch.Draw(textures[obj.ImageId][obj.ImageNumber], new Vector2(obj.Position.X + VisualShift.X, obj.Position.Y - PositionOffset.Y), Color);
                 }
             }
 
+            var font = fonts[(byte)FontSize];
             foreach (var c in StateComponents)
             {
-                Сolour = c.IsHover ? Color.Gray : Color.White;
-                spriteBatch.Draw(textures[c.ImageId].First(), c.Rectangle, Сolour);
-
+                Color = c.IsHover ? Color = Color.Gray : Color.White;
+                spriteBatch.Draw(textures[c.ImageId].First(), c.Rectangle, Color);
                 if (!string.IsNullOrEmpty(c.Text))
                 {
-                    var x = c.Rectangle.X + (c.Rectangle.Width / 2) - (font35.MeasureString(c.Text).X / 2);
-                    var y = c.Rectangle.Y + (c.Rectangle.Height / 2) - (font35.MeasureString(c.Text).Y / 2);
+                    var x = (c.Rectangle.X + (c.Rectangle.Width / 2)) - (font.MeasureString(c.Text).X / 2);
+                    var y = (c.Rectangle.Y + (c.Rectangle.Height / 2)) - (font.MeasureString(c.Text).Y / 2);
 
-                    spriteBatch.DrawString(font35, c.Text, new Vector2(x, y), Color.Black);
+                    spriteBatch.DrawString(font, c.Text, new Vector2(x, y), Color.Black);
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace RoadRacesMVP
         {
             StateComponents = components;
             Objects = objects;
-            VisualShift = new(VisualShift.X + POVShift.X, (VisualShift.Y + POVShift.Y) % GameConstants.SCREENHEIGHT);
+            VisualShift = new(VisualShift.X + POVShift.X, (VisualShift.Y + POVShift.Y) % ScreenSize.ScreenHeight);
             PositionOffset = positionOffset;
         }
     }

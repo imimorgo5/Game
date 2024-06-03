@@ -7,14 +7,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RoadRacesMVP
 {
-    public class MainMenuState : IState
+    public class MainMenuState : State
     {
-        public List<IComponent> Components { get; private set; }
-        public Dictionary<int, IObject> Objects { get; private set; }
+        public override event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
 
-        public event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
-
-        public void Initialize()
+        public override void Initialize()
         {
             var newGameButton = new Button(new(735, 405), 450, 120, (byte)ObjectTypes.bigButton, ActionType.startGame, "Играть");
             var settingsButton = new Button(new(735, 550), 450, 120, (byte)ObjectTypes.bigButton, ActionType.settingsFromMenu, "Настройки");
@@ -23,14 +20,6 @@ namespace RoadRacesMVP
 
             Objects = new();
             Components = new() { newGameButton, settingsButton, quitButton, rulesButton };
-            UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
-        }
-
-        public void Update()
-        {
-            foreach (var component in Components)
-                component.Update();
-
             UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
         }
     }

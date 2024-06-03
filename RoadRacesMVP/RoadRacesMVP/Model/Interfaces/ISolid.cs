@@ -9,6 +9,6 @@ namespace RoadRacesMVP
     {
         bool IsColision { get; }
         RectangleCollider Collider { get; }
-        void MoveCollider(Vector2 newPos);
+        void MoveCollider();
     }
 }

@@ -12,7 +12,7 @@ namespace RoadRacesMVP
         public Vector2 Speed { get; set; }
         public RectangleCollider Collider { get; private set; }
         public int ImageId { get; set; }
-        public int ImageNumber { get; set; }
+        public int ImageNumber { get; private set; }
         public  int Width { get; private set; }
         public int Height { get; private set; }
         public bool IsColision { get; private set; }
@@ -32,10 +32,10 @@ namespace RoadRacesMVP
         public void Move(Vector2 newPos)
         {
             Position = newPos;
-            MoveCollider(Position);
+            MoveCollider();
         }
 
-        public void MoveCollider(Vector2 newPos)
+        public void MoveCollider()
         {
             Collider = new((int)Position.X, (int)Position.Y, Width, Height);
         }

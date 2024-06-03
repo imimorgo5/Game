@@ -20,45 +20,46 @@ namespace RoadRacesMVP
         public int Height { get; private set; }
         public bool IsColision { get; private set; }
         private HashSet<IObject> GameObjects { get; set; }
+        private bool IsSteering {  get; set; }
+        private float TargetPositionX { get; set; }
 
-        public Car(Vector2 position, int width, int height, Vector2 speed, double maxSpeed)
+        public Car(Vector2 position, int width, int height)
         {
             Position = position;
             Height = height;
             Width = width;
             Collider = new((int)Position.X, (int)Position.Y, Width, Height);
-            MaxSpeed = maxSpeed;
-            Speed = speed;
             IsColision = true;
+            Speed = new(0, -5);
+
+            var maxSpeed = -15 - 2 * GameSettings.Difficult;
+            MaxSpeed = new Random().Next(maxSpeed, -15);
         }
 
         public Vector2 Speed
         {
-            get
-            {
-                return speed;
-            }
+            get => speed;
+
             set
             {
                 speed = value;
 
-                if (value.Y <= MaxSpeed)
+                if (value.Y < MaxSpeed)
                     speed.Y = (float)MaxSpeed;
             }
         }
 
-        public void MoveCollider(Vector2 newPos)
-        {
-            Collider = new((int)Position.X, (int)Position.Y, Width, Height);
-        }
+        public void MoveCollider() => Collider = new((int)Position.X, (int)Position.Y, Width, Height);
 
         public void Update(Vector2 offset, HashSet<IObject> objects)
         {
             GameObjects = objects;
-            //MoveIfCarAhead();
+            MoveIfCarAhead();
             Move(Position + Speed + offset);
-            MaxSpeed = -15 - 2 * GameSettings.Difficult;
-            Speed = new(0, Speed.Y);
+
+            var maxSpeed = -15 - 2 * GameSettings.Difficult;
+            if (MaxSpeed < maxSpeed)
+                MaxSpeed = maxSpeed;
 
             if (Speed.Y > -10)
                 Speed += new Vector2(0, -0.05f);
@@ -69,7 +70,7 @@ namespace RoadRacesMVP
         public void Move(Vector2 newPos)
         {
             Position = newPos;
-            MoveCollider(Position);
+            MoveCollider();
         }
 
         private void MoveIfCarAhead()
@@ -78,53 +79,64 @@ namespace RoadRacesMVP
             var isLeftObstacle = false;
             var isRightObstacle = false;
             var isCarAhead = false;
-            var distanceBetweenCar = GameState.TileSize * 5;
-            var distanceToWall = GameState.TileSize * 2;
-            foreach (var obj in GameObjects)
+            var distanceToLeftWall = GameConstants.TileSize * (GameConstants.ObjectsPositions.Min() - GameConstants.LeftWallPosition);
+            var distanceToRightWall = GameConstants.TileSize * (GameConstants.RightWallPosition - GameConstants.ObjectsPositions.Max());
+
+            if (!IsSteering)
             {
-                if (obj is not ISolid || obj == this)
-                    continue;
-
-                if (obj is Car || obj is Player)
+                foreach (var obj in GameObjects)
                 {
-                    var offsetPosition = Position - obj.Position;
-                    if (offsetPosition.Y < 500 && Math.Abs(offsetPosition.X) < distanceBetweenCar && Speed.Y < obj.Speed.Y)
-                        isCarAhead = true;
+                    if (obj is not ISolid || obj == this)
+                        continue;
 
-                    if (Math.Abs(offsetPosition.Y) < 300 && Math.Abs(offsetPosition.X) == distanceBetweenCar)
+                    var offsetPosition = Position - obj.Position;
+                    if (obj is Car || obj is Player)
                     {
-                        if (offsetPosition.X > 0)
+                        if (offsetPosition.Y < 600 && offsetPosition.Y > 0 && Math.Abs(offsetPosition.X) < GameConstants.DistanceBeetweenCar && Speed.Y < obj.Speed.Y)                        
+                            isCarAhead = true;
+
+                        if (Math.Abs(offsetPosition.Y) < 600 && Math.Abs(offsetPosition.X) <= GameConstants.DistanceBeetweenCar && Math.Abs(offsetPosition.X) != 0)
+                        {
+                            if (offsetPosition.X > 0)
+                                isLeftObstacle = true;
+                            else
+                                isRightObstacle = true;
+                        }
+                    }
+                    else if (obj is Wall)
+                    {
+                        if (Math.Abs(offsetPosition.X) == distanceToLeftWall)
                             isLeftObstacle = true;
-                        else
+                        else if (Math.Abs(offsetPosition.X) == distanceToRightWall)
                             isRightObstacle = true;
                     }
                 }
-                else if (obj is Wall)
+
+                if (isCarAhead)
                 {
-                    var offsetPosition = Position - obj.Position;
-                    if (Math.Abs(offsetPosition.X) == distanceToWall)
+                    IsSteering = true;
+                    if (isLeftObstacle && !isRightObstacle)
+                        speedAdd = new Vector2(5, 0);
+                    else if (!isLeftObstacle && isRightObstacle)
+                        speedAdd = new Vector2(-5, 0);
+                    else if (!isLeftObstacle && !isRightObstacle)
+                        speedAdd = new Vector2(new int[] { -5, 5 }[new Random().Next(0, 2)], 0);
+                    else
                     {
-                        if (offsetPosition.X > 0)
-                            isLeftObstacle = true;
-                        else
-                            isRightObstacle = true;
+                        speedAdd = new Vector2(0, 1);
+                        IsSteering = false;
                     }
+
+                    Speed += speedAdd;
+                    TargetPositionX = Position.X + (speedAdd.X / Math.Abs(speedAdd.X) * GameConstants.DistanceBeetweenCar);
                 }
             }
 
-            if (isCarAhead)
+            if (IsSteering && Position.X == TargetPositionX)
             {
-                if (isLeftObstacle && !isRightObstacle)
-                    speedAdd = new Vector2(5, 0);
-                else if (!isLeftObstacle && isRightObstacle)
-                    speedAdd = new Vector2(-5, 0);
-                else if (isRightObstacle && isLeftObstacle)
-                    speedAdd = new Vector2(0, 1);
-                else if (!isLeftObstacle && !isRightObstacle)
-                    speedAdd = new Vector2(-5, 0);
+                IsSteering = false;
+                Speed = new(0, Speed.Y);
             }
-
-            Speed += speedAdd;
         }
     }
 }

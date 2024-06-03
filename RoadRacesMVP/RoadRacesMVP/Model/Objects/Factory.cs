@@ -20,11 +20,11 @@ namespace RoadRacesMVP
             {"Bomb", ((byte)ObjectTypes.bomb, 200, 200)}
         };
 
-        private static Car CreateClassicCar(float x, float y, Vector2 speed, double maxSpeed)
+        private static Car CreateClassicCar(float x, float y)
         {
             var width = Objects["Car"].width;
             var height = Objects["Car"].height;
-            var car = new Car(new(x, y), width, height, speed, maxSpeed);
+            var car = new Car(new(x, y), width, height);
             car.ImageId = Objects["Car"].type;
             car.ImageNumber = new Random().Next(0, 5);
             return car;
@@ -96,18 +96,17 @@ namespace RoadRacesMVP
 
         public static IObject GenerateObject(char sign, float xTile, float yTile)
         {
-            var x = xTile * GameState.TileSize;
-            var y = yTile * GameState.TileSize;
+            var x = xTile * GameConstants.TileSize;
+            var y = yTile * GameConstants.TileSize;
             IObject generatedObject = null;
 
             switch (sign)
             {
                 case 'C':
-                    var maxSpeed = -15 - 2 * GameSettings.Difficult;
-                    generatedObject = CreateClassicCar(x, y, new(0, 0), new Random().Next(maxSpeed, -15));
+                    generatedObject = CreateClassicCar(x, y);
                     break;
                 case 'P':
-                    generatedObject = CreatePlayerCar(x + GameState.TileSize / 2, y, new(0, 0));
+                    generatedObject = CreatePlayerCar(x + GameConstants.TileSize / 2, y, new(0, 0));
                     break;
                 case 'W':
                     generatedObject = CreateWall(x, y);

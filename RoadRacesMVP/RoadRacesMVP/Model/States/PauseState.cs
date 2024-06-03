@@ -7,19 +7,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RoadRacesMVP
 {
-    public class PauseState : IState
+    public class PauseState : State
     {
-        public List<IComponent> Components { get; private set; }
-        public Dictionary<int, IObject> Objects { get; private set; }
 
-        public event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
+        public override event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
         private PauseArgs PauseArgs { get; set; }
 
         public PauseState(PauseArgs pauseArgs) => PauseArgs = pauseArgs;
 
         public PauseArgs GetPauseArgs() => PauseArgs;
 
-        public void Initialize()
+        public override void Initialize()
         {
             var countinueButton = new Button(new(735, 405), 450, 125, (byte)ObjectTypes.bigButton, ActionType.continueGame, "Продолжить");
             var settingsButton = new Button(new(735, 550), 450, 125, (byte)ObjectTypes.bigButton, ActionType.settingsFromPause, "Настройки");
@@ -27,14 +25,6 @@ namespace RoadRacesMVP
 
             Objects = new();
             Components = new() { countinueButton, settingsButton, quitToMenuButton };
-            UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
-        }
-
-        public void Update()
-        {
-            foreach (var component in Components)
-                component.Update();
-
             UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
         }
     }

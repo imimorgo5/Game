@@ -16,7 +16,7 @@ namespace RoadRacesMVP
         public Vector2 Position { get; private set; }
         public RectangleCollider Collider { get; private set; }
         public int ImageId { get; set; }
-        public int ImageNumber {  get; set; }
+        public int ImageNumber {  get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
         public bool IsColision { get; private set; }
@@ -50,7 +50,7 @@ namespace RoadRacesMVP
             {
                 speed = value;
 
-                if (value.Y <= MaxSpeed)
+                if (value.Y < MaxSpeed)
                     speed.Y = (float)MaxSpeed;
             }
         }
@@ -72,13 +72,10 @@ namespace RoadRacesMVP
         public void Move(Vector2 newPos)
         {
             Position = newPos;
-            MoveCollider(Position);
+            MoveCollider();
         }
 
-        public void MoveCollider(Vector2 newPos)
-        {
-            Collider = new((int)Position.X, (int)Position.Y, Width, Height);
-        }
+        public void MoveCollider() => Collider = new((int)Position.X, (int)Position.Y, Width, Height);
 
         public void ContactWithCollectedObject()
         {

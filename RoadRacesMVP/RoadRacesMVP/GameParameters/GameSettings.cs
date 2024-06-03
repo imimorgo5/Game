@@ -12,9 +12,9 @@ namespace RoadRacesMVP
     public static class GameSettings
     {
         private const string PATH = "GameSettings.json";
-        public static int Difficult = 5;
-        public static double Volume = 5;
-        public static double RecordScoreCount = 0;
+        public static int Difficult;
+        public static double Volume;
+        public static double RecordScoreCount;
 
         public static void Save()
         {
@@ -33,13 +33,27 @@ namespace RoadRacesMVP
         public static void Load()
         {
             if (!File.Exists(PATH))
-                Save();
+                Create();
 
             var serializedText = File.ReadAllText(PATH);
             var setup = JsonSerializer.Deserialize<GameSetup>(serializedText);
             Difficult = setup.Difficult;
             Volume = setup.Volume;
             RecordScoreCount = setup.RecordScoreCount;
+        }
+
+        private static void Create()
+        {
+            var setup = new GameSetup()
+            {
+                Difficult = 5,
+                Volume = 5,
+                RecordScoreCount = 0
+            };
+
+            var serializedText = JsonSerializer.Serialize<GameSetup>(setup);
+            Trace.WriteLine(serializedText);
+            File.WriteAllText(PATH, serializedText);
         }
     }
 }

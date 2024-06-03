@@ -9,15 +9,15 @@ namespace RoadRacesMVP
     public class GameplayPresenter
     {
         private IGameplayView View;
-        private IState Model;
+        private State Model;
 
-        public GameplayPresenter(IGameplayView view, IState state)
+        public GameplayPresenter(IGameplayView view, State state)
         {
             GameSettings.Load();
-            Initialize(view, state);
+            ChangeState(view, state);
         }
 
-        private void Initialize(IGameplayView view, IState state)
+        private void ChangeState(IGameplayView view, State state)
         {
             Model = state;
             View = view;
@@ -28,7 +28,7 @@ namespace RoadRacesMVP
                 gameState.PlaySound += PlaySound;
             }
 
-            View.CurrentStateView.ButtonClicked += ChangeState;
+            View.CurrentStateView.ButtonClicked += ButtonAction;
             View.CurrentStateView.PlayerSpeedChanged += ViewModelMovePlayer;
             View.CycleFinished += ViewStateUpdate;
             Model.UpdatedState += ModelViewUpdate;
@@ -47,28 +47,28 @@ namespace RoadRacesMVP
             View.ChangeStateView(ViewType.GameOverStateView);
             var gameOverState = new GameOverState();
             gameOverState.SetCounts(args.ScoreCount, args.CoinCount);
-            Initialize(View, gameOverState);
+            ChangeState(View, gameOverState);
         }
 
-        private void ChangeState(object sender, ActionType actionType)
+        private void ButtonAction(object sender, ActionType actionType)
         {
             PlaySound(this, SoundType.ButtonClick);
             switch (actionType)
             {
                 case ActionType.startGame:
                     View.ChangeStateView(ViewType.GameStateView);
-                    Initialize(View, new GameState());
+                    ChangeState(View, new GameState());
                     PlaySound(this, SoundType.GameSong);
                     break;
 
                 case ActionType.settingsFromMenu:
                     View.ChangeStateView(ViewType.SettingsStateView);
-                    Initialize(View, new SettingsFromMenuState());
+                    ChangeState(View, new SettingsFromMenuState());
                     break;
 
                 case ActionType.settingsFromPause:
                     View.ChangeStateView(ViewType.SettingsStateView);
-                    Initialize(View, new SettingsFromPauseState((Model as PauseState).GetPauseArgs()));
+                    ChangeState(View, new SettingsFromPauseState((Model as PauseState).GetPauseArgs()));
                     break;
 
                 case ActionType.quitGame:
@@ -78,12 +78,12 @@ namespace RoadRacesMVP
 
                 case ActionType.quitToMenu:
                     View.ChangeStateView(ViewType.MainMenuStateView);
-                    Initialize(View, new MainMenuState());
+                    ChangeState(View, new MainMenuState());
                     break;
 
                 case ActionType.quitToMenuFromGame:
                     View.ChangeStateView(ViewType.MainMenuStateView);
-                    Initialize(View, new MainMenuState());
+                    ChangeState(View, new MainMenuState());
                     PlaySound(this, SoundType.MenuSong);
                     break;
 
@@ -96,17 +96,17 @@ namespace RoadRacesMVP
                     else if (Model is SettingsFromPauseState settings)
                         args = settings.GetPauseArgs();
 
-                    Initialize(View, new PauseState(args));
+                    ChangeState(View, new PauseState(args));
                     break;
 
                 case ActionType.continueGame:
                     View.ChangeStateView(ViewType.GameStateView);
-                    Initialize(View, new GameState((Model as PauseState).GetPauseArgs()));
+                    ChangeState(View, new GameState((Model as PauseState).GetPauseArgs()));
                     break;
 
                 case ActionType.rules:
                     View.ChangeStateView(ViewType.RulesStateView);
-                    Initialize(View, new RulesState());
+                    ChangeState(View, new RulesState());
                     break;
 
                 case ActionType.resetRecordScore:

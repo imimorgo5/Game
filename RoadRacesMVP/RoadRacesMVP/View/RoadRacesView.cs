@@ -12,11 +12,10 @@ namespace RoadRacesMVP
     {
         private GraphicsDeviceManager Graphics { get; }
         private SpriteBatch SpriteBatch { get; set; }
-        private Dictionary<int, List<Texture2D>> Textures {  get; set; }
+        private Dictionary<int, List<Texture2D>> Textures { get; set; }
         private Dictionary<int, SoundEffect> SoundEffects { get; set; }
         private Dictionary<int, Song> Songs { get; set; }
-        private SpriteFont Font45 {  get; set; }
-        private SpriteFont Font35 { get; set; }
+        private Dictionary<int, SpriteFont> Fonts { get; set; }
         private Dictionary<int, Texture2D> Backgrounds {  get; set; }
         private Vector2 VisualShift { get; set; }
         public StateView CurrentStateView { get; private set; }
@@ -34,14 +33,15 @@ namespace RoadRacesMVP
             Textures = new();
             SoundEffects = new();
             Songs = new();
+            Fonts = new();
         }
 
         protected override void Initialize()
         {
             base.Initialize();            
             Graphics.IsFullScreen = false;
-            Graphics.PreferredBackBufferWidth = GameConstants.SCREENWIDTH;
-            Graphics.PreferredBackBufferHeight = GameConstants.SCREENHEIGHT;
+            Graphics.PreferredBackBufferWidth = ScreenSize.ScreenWidth;
+            Graphics.PreferredBackBufferHeight = ScreenSize.ScreenHeight;
             Graphics.ApplyChanges();
             VisualShift -= new Vector2(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight * 0.8f);
             Window.IsBorderless = true;
@@ -90,8 +90,8 @@ namespace RoadRacesMVP
             Songs.Add((byte)SoundType.MenuSong, Content.Load<Song>("MusicAndSounds/MainMenuMusic"));
             Songs.Add((byte)SoundType.GameSong, Content.Load<Song>("MusicAndSounds/GameMusic"));
 
-            Font45 = Content.Load<SpriteFont>("Fonts/Font45");
-            Font35 = Content.Load<SpriteFont>("Fonts/Font35");
+            Fonts.Add((byte)FontSize.Size45, Content.Load<SpriteFont>("Fonts/Font45"));
+            Fonts.Add((byte)FontSize.Size35, Content.Load<SpriteFont>("Fonts/Font35"));
         }
 
         protected override void Update(GameTime gameTime)
@@ -105,7 +105,7 @@ namespace RoadRacesMVP
         {
             GraphicsDevice.Clear(Color.White);            
             SpriteBatch.Begin();
-            CurrentStateView.Draw(SpriteBatch, Textures, Backgrounds, Font45, Font35);            
+            CurrentStateView.Draw(SpriteBatch, Textures, Backgrounds, Fonts);
             SpriteBatch.End();
             base.Draw(gameTime);
         }

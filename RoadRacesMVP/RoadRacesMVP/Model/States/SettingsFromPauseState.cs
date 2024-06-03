@@ -7,20 +7,18 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RoadRacesMVP
 {
-    public class SettingsFromPauseState : IState
+    public class SettingsFromPauseState : State
     {
-        public List<IComponent> Components { get; private set; }
-        public Dictionary<int, IObject> Objects { get; private set; }
         private PauseArgs PauseArgs { get; set; }
 
-        public event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
+        public override event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
         public event EventHandler<SoundType> PlaySound = delegate { };
 
         public SettingsFromPauseState(PauseArgs pauseArgs) => PauseArgs = pauseArgs;
 
         public PauseArgs GetPauseArgs() => PauseArgs;
 
-        public void Initialize()
+        public override void Initialize()
         {
             var exitToMenuButton = new Button(new(50, 50), 300, 120, (byte)ObjectTypes.bigButton, ActionType.pause, "Назад");
             var resetRecordScore = new Button(new(710, 790), 500, 120, (byte)ObjectTypes.bigButton, ActionType.resetRecordScore, "Сбросить рекорд");
@@ -36,14 +34,6 @@ namespace RoadRacesMVP
 
             Objects = new();
             Components = new() { exitToMenuButton, resetRecordScore, increaseVolumeButton, decreaseVolumeButton, increaseDifficultButton, decreaseDifficultButton, volumeLevel, difficultLevel };
-            UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
-        }
-
-        public void Update()
-        {
-            foreach (var component in Components)
-                component.Update();
-
             UpdatedState.Invoke(this, new() { Components = Components, Objects = Objects, POVShift = Vector2.Zero });
         }
     }

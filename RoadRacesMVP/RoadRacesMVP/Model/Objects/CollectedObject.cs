@@ -11,13 +11,13 @@ namespace RoadRacesMVP
     public class CollectedObject
     {
         public int ImageId { get; set; }
-        public int ImageNumber { get; set; }
-        public Vector2 Position { get; set; }
+        public int ImageNumber { get; private set; }
+        public Vector2 Position { get; private set; }
         public Vector2 Speed { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
         public bool IsCollected { get; set; }
-        public RectangleCollider Collider { get; set; }
+        public RectangleCollider Collider { get; private set; }
 
         public CollectedObject(Vector2 position, int width, int height)
         {

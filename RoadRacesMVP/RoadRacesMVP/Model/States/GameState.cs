@@ -8,16 +8,12 @@ using System.Xml.Linq;
 
 namespace RoadRacesMVP
 {
-    public class GameState : IState
+    public class GameState : State
     {
-        public event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
+        public override event EventHandler<GameplayEventArgs> UpdatedState = delegate { };
         public event EventHandler<GameOverArgs> GameOver = delegate { };
         public event EventHandler<SoundType> PlaySound = delegate { };
 
-        public const int TileSize = GameConstants.TILESIZE;
-        public const int LeftWallPosition = 6;
-        public const int RightWallPosition = 28;
-        public const int RowCount = GameConstants.SCREENWIDTH / TileSize;
         private int LineCount { get; set; }
         private int CurrentId { get; set; }
         private int Shift { get; set; }
@@ -25,9 +21,7 @@ namespace RoadRacesMVP
         private Vector2 PositionOffset { get; set; }
         private Queue<char[]> Map { get; set; }
         private int PlayerId { get; set; }
-        public Dictionary<int, IObject> Objects { get; private set; }
         public Dictionary<int, ISolid> SolidObjects { get; private set; }
-        public List<IComponent> Components { get; private set; }
         private double ScoreCount { get; set; }
         private PauseArgs PauseArgs { get; set; }
 
@@ -61,7 +55,7 @@ namespace RoadRacesMVP
             Components = new() { pauseButton, recordCounter, scoreCounter, coinsCounter, healthCounter };
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             if (PauseArgs != null)
                 InitializeFromPause(PauseArgs);
@@ -73,15 +67,15 @@ namespace RoadRacesMVP
         {
             var playerRow = 11;
             var playerPosition = 15;
-            var lineCount = 2160 / TileSize;
+            var lineCount = 2160 / GameConstants.TileSize;
             ScoreCount = 0;            
 
             for (var i = 0; i < lineCount; i++)
             {
                 LineCount++;
-                var line = new char[RowCount];
-                line[LeftWallPosition] = 'W';
-                line[RightWallPosition] = 'W';
+                var line = new char[GameConstants.RowCount];
+                line[GameConstants.LeftWallPosition] = 'W';
+                line[GameConstants.RightWallPosition] = 'W';
 
                 if (i == playerRow)
                     line[playerPosition] = 'P';
@@ -91,21 +85,21 @@ namespace RoadRacesMVP
 
             AddToObjects();
 
-            POVShift = new(playerPosition * TileSize, GameConstants.SCREENHEIGHT);
-            PositionOffset = new(0, GameConstants.SCREENHEIGHT - playerRow * TileSize + Objects[PlayerId].Height + TileSize);
+            POVShift = new(playerPosition * GameConstants.TileSize, ScreenSize.ScreenHeight);
+            PositionOffset = new(0, ScreenSize.ScreenHeight - playerRow * GameConstants.TileSize + Objects[PlayerId].Height + GameConstants.TileSize);
             UpdatedState.Invoke(this, new() { Objects = Objects, Components = Components, POVShift = POVShift, PositionOffset = PositionOffset });
         }
 
         private void InitializeFromPause(PauseArgs args)
         {
             ScoreCount = args.ScoreCount;
-            POVShift = args.POVShift + new Vector2(0, GameConstants.SCREENHEIGHT);
+            POVShift = args.POVShift + new Vector2(0, ScreenSize.ScreenHeight);
             PositionOffset = args.PositionOffset;
 
             foreach (var obj in args.GameObjects)
             {
                 if (CurrentId == PlayerId)
-                    CurrentId = (CurrentId + 1) % 1000;
+                    CurrentId = (CurrentId + 1) % 10000;
 
                 Objects.Add(CurrentId, obj);
 
@@ -115,7 +109,7 @@ namespace RoadRacesMVP
                 if (obj is ISolid s)
                     SolidObjects.Add(CurrentId, s);
 
-                CurrentId = (CurrentId + 1) % 1000;
+                CurrentId = (CurrentId + 1) % 10000;
             }
 
             UpdatedState.Invoke(this, new() { Objects = Objects, Components = Components, POVShift = POVShift, PositionOffset = PositionOffset });
@@ -125,28 +119,26 @@ namespace RoadRacesMVP
 
         private void GenerateRows(int count)
         {
-            var objectsPositions = new int[] { 8, 13, 18, 23 };
-            var objects = new char[] { 'S', 'O', 'R', 'B', 'E' };
             for (var i = 0; i < count; i++)
             {
                 LineCount = (LineCount + 1) % 100;
-                var line = new char[RowCount];
-                line[LeftWallPosition] = 'W';
-                line[RightWallPosition] = 'W';
+                var line = new char[GameConstants.RowCount];
+                line[GameConstants.LeftWallPosition] = 'W';
+                line[GameConstants.RightWallPosition] = 'W';
 
                 var frequencyOfGenerationCar = 40 - 2 * GameSettings.Difficult;
                 var frequencyOfGenerationObjects = 20 + 3 * GameSettings.Difficult;
 
                 if (LineCount % frequencyOfGenerationCar == 0)
-                    line[objectsPositions[new Random().Next(0, objectsPositions.Length)]] = 'C';
+                    line[GameConstants.ObjectsPositions[new Random().Next(0, GameConstants.ObjectsPositions.Length)]] = 'C';
 
                 if (LineCount % frequencyOfGenerationObjects == 0)
                 {
-                    var index = new Random().Next(0, objectsPositions.Length);
+                    var index = new Random().Next(0, GameConstants.ObjectsPositions.Length);
                     while (line[index] == 'C')
-                        index = new Random().Next(0, objectsPositions.Length);
+                        index = new Random().Next(0, GameConstants.ObjectsPositions.Length);
 
-                    line[objectsPositions[index]] = objects[new Random().Next(0, objects.Length)];
+                    line[GameConstants.ObjectsPositions[index]] = GameConstants.ObjectsChar[new Random().Next(0, GameConstants.ObjectsChar.Length)];
                 }
 
                 Map.Enqueue(line);
@@ -161,7 +153,7 @@ namespace RoadRacesMVP
             {
                 foreach (var index in Objects.Keys)
                 {
-                    if (Objects[index].Position.Y > GameConstants.SCREENHEIGHT * 2)
+                    if (Objects[index].Position.Y > ScreenSize.ScreenHeight * 2)
                     {
                         if (SolidObjects.ContainsKey(index))
                             SolidObjects.Remove(index);
@@ -180,7 +172,7 @@ namespace RoadRacesMVP
                     if (currentRow[x] != '\0')
                     {
                         if (CurrentId == PlayerId)
-                            CurrentId = (CurrentId + 1) % GameConstants.SCREENHEIGHT;
+                            CurrentId = (CurrentId + 1) % 10000;
 
                         var generatedObject = Factory.GenerateObject(currentRow[x], x, y - 1);
 
@@ -194,14 +186,14 @@ namespace RoadRacesMVP
                         if (generatedObject is ISolid s)
                             SolidObjects.Add(CurrentId, s);
 
-                        CurrentId = (CurrentId + 1) % GameConstants.SCREENHEIGHT;
+                        CurrentId = (CurrentId + 1) % 10000;
                     }
                 }
                 y--;
             }
         }
 
-        public void Update()
+        public override void Update()
         {
             var collisionObjects = new Dictionary<int, Vector2>();
 
@@ -240,18 +232,21 @@ namespace RoadRacesMVP
             }
 
             if ((Objects[PlayerId] as Player).CollisionCount == 3)
+            {
                 GameOver.Invoke(this, new GameOverArgs() { ScoreCount = ScoreCount, CoinCount = (Objects[PlayerId] as Player).CollectedCoinsCount });
+                return;
+            }
 
             var positionOffset = Objects[PlayerId].Position - playerInitPosition;
             playerShift -= new Vector2(0, positionOffset.Y);
 
-            POVShift = new(POVShift.X + playerShift.X, (POVShift.Y + playerShift.Y) % GameConstants.SCREENHEIGHT);
-            PositionOffset = new(PositionOffset.X, (PositionOffset.Y + positionOffset.Y) % GameConstants.SCREENHEIGHT);
+            POVShift = new(POVShift.X + playerShift.X, (POVShift.Y + playerShift.Y) % ScreenSize.ScreenHeight);
+            PositionOffset = new(PositionOffset.X, (PositionOffset.Y + positionOffset.Y) % ScreenSize.ScreenHeight);
 
             Shift += (int)Math.Abs(playerShift.Y);
-            if (Shift >= TileSize)
+            if (Shift >= GameConstants.TileSize)
             {
-                GenerateRows((Shift + TileSize / 2) / TileSize);
+                GenerateRows((Shift + GameConstants.TileSize / 2) / GameConstants.TileSize);
                 AddToObjects();
                 Shift = 0;
             }
@@ -269,16 +264,6 @@ namespace RoadRacesMVP
                     Vector2 oppositeDirection;
                     while (RectangleCollider.IsCollided(sObj1.Collider, sObj2.Collider))
                     {
-                        //Временное решение, пока нет логики перестроения в другой ряд, если впереди более медленная машина
-                        if (sObj1 is Car && sObj2 is Car)
-                        {
-                            if (Objects[obj1.Id].Speed.Y < Objects[obj2.Id].Speed.Y)
-                                Objects[obj1.Id].Move(obj1.initPos);
-                            else
-                                Objects[obj2.Id].Move(obj2.initPos);
-                        }
-                        //
-
                         isCollided = true;
                         if (obj1.initPos != Objects[obj1.Id].Position)
                         {
@@ -322,19 +307,19 @@ namespace RoadRacesMVP
 
         public void ChangePlayerSpeed(Direction dir)
         {
-            var p = Objects[PlayerId] as Player;
+            var player = Objects[PlayerId] as Player;
             var turnValue = 20;
 
-            if (p.IsReverseSteering)
+            if (player.IsReverseSteering)
                 turnValue = -20;
 
             switch (dir)
             {
                 case Direction.right:
-                    p.Speed += new Vector2(turnValue, 0);
+                    player.Speed += new Vector2(turnValue, 0);
                     break;
                 case Direction.left:
-                    p.Speed += new Vector2(-turnValue, 0);
+                    player.Speed += new Vector2(-turnValue, 0);
                     break;
             }
         }
