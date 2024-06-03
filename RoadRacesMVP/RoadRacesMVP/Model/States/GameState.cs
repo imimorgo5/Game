@@ -153,7 +153,7 @@ namespace RoadRacesMVP
             {
                 foreach (var index in Objects.Keys)
                 {
-                    if (Objects[index].Position.Y > ScreenSize.ScreenHeight * 2)
+                    if (Objects[index].Position.Y > ScreenSize.ScreenHeight * 2 || Objects[index].Position.Y < 0)
                     {
                         if (SolidObjects.ContainsKey(index))
                             SolidObjects.Remove(index);
