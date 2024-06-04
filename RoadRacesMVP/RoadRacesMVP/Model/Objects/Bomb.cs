@@ -10,6 +10,6 @@ namespace RoadRacesMVP
 {
     public class Bomb : CollectedObject, IObject
     {
-        public Bomb(Vector2 position, int width, int height) : base(position, width, height) { }
+        public Bomb(Vector2 position, int width, int height, int imageId) : base(position, width, height, imageId) { }
     }
 }

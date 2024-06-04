@@ -12,7 +12,7 @@ namespace RoadRacesMVP
         public EventHandler<SoundType> PlaySound = delegate { };
 
         private Vector2 speed;
-        private double MaxSpeed {  get; set; }
+        private float MaxSpeed { get => -20 - 3 * GameSettings.Difficult; }
         public Vector2 Position { get; private set; }
         public RectangleCollider Collider { get; private set; }
         public int ImageId { get; set; }
@@ -29,17 +29,19 @@ namespace RoadRacesMVP
         private HashSet<IObject> GameObjects { get; set; }
 
 
-        public Player(Vector2 position, int width, int height)
+        public Player(Vector2 position, int width, int height, int imageId)
         {
             Position = position;
             Height = height;
             Width = width;
             ImageNumber = 0;
+            ImageId = imageId;
             Collider = new((int)Position.X, (int)Position.Y, Width, Height);
             IsColision = true;
             IsReverseSteering = false;
             CollectedCoinsCount = 0;
             CollisionCount = 0;
+            Speed = Vector2.Zero;
         }
 
         public Vector2 Speed
@@ -51,16 +53,15 @@ namespace RoadRacesMVP
                 speed = value;
 
                 if (value.Y < MaxSpeed)
-                    speed.Y = (float)MaxSpeed;
+                    speed.Y = MaxSpeed;
             }
         }
 
-        public void Update(Vector2 offset, HashSet<IObject> objects)
+        public void Update(Vector2 playerSpeed, HashSet<IObject> objects)
         {
             GameObjects = objects;
             ContactWithCollectedObject();
-            Move(Position + Speed + offset);
-            MaxSpeed = -20 - 3 * GameSettings.Difficult;
+            Move(Position + Speed - playerSpeed);
             Speed = new(0, Speed.Y);
 
             if (Speed.Y > -10)

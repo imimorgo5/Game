@@ -10,6 +10,6 @@ namespace RoadRacesMVP
 {
     public class Braker : CollectedObject, IObject
     {        
-        public Braker(Vector2 position, int width, int height) : base(position, width, height) { }
+        public Braker(Vector2 position, int width, int height, int imageId) : base(position, width, height, imageId) { }
     }
 }

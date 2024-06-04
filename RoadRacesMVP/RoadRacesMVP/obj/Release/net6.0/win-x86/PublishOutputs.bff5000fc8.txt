@@ -1,0 +1,43 @@
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\RoadRacesMVP.pdb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\GameBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\GameOverBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\MainMenuBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\PauseBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\RulesBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Backgrounds\SettingsBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Fonts\Font.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Fonts\Font35.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Fonts\Font45.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\ButtonClickSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\CoinSelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\GameMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\GameMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\HitSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\MainMenuMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Music And Sounds\MainMenuMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\BombSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\BrakeSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\ButtonClickSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\CoinSelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\GameMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\GameMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\HitSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\MainMenuMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\MainMenuMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/MusicAndSounds\SelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\BigButton.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\BlueCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\Bomb.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\Braker.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\BrokeSteeringObj.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\Coin.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\GreenCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\OffColisionObj.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\OrangeCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\PinkCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\PlayerCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\SmallButton.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\Content/Sprites\YellowCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\SDL2.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\soft_oal.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacers\RoadRacesMVP.exe

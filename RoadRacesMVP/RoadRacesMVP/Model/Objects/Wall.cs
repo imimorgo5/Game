@@ -17,17 +17,18 @@ namespace RoadRacesMVP
         public int Height { get; private set; }
         public bool IsColision { get; private set; }
 
-        public Wall(Vector2 position, int width, int height)
+        public Wall(Vector2 position, int width, int height, int imageId)
         {
             Position = position;
             Height = height;
             Width = width;
+            ImageId = imageId;
             ImageNumber = 0;
             Collider = new((int)Position.X, (int)Position.Y, Width, Height);      
             IsColision = true;
         }
 
-        public void Update(Vector2 offset, HashSet<IObject> objects) => Move(Position + offset);
+        public void Update(Vector2 playerSpeed, HashSet<IObject> objects) => Move(Position - playerSpeed);
 
         public void Move(Vector2 newPos)
         {
@@ -35,9 +36,6 @@ namespace RoadRacesMVP
             MoveCollider();
         }
 
-        public void MoveCollider()
-        {
-            Collider = new((int)Position.X, (int)Position.Y, Width, Height);
-        }
+        public void MoveCollider() => Collider = new((int)Position.X, (int)Position.Y, Width, Height);
     }
 }

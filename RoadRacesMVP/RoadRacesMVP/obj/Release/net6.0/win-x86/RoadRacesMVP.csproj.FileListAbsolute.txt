@@ -1,0 +1,58 @@
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\GameBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\GameOverBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\MainMenuBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\PauseBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\RulesBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Backgrounds\SettingsBackground.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Fonts\Font.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Fonts\Font35.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Fonts\Font45.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\ButtonClickSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\CoinSelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\GameMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\GameMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\HitSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\MainMenuMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Music And Sounds\MainMenuMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\BombSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\BrakeSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\ButtonClickSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\CoinSelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\GameMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\GameMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\HitSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\MainMenuMusic.ogg
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\MainMenuMusic.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\MusicAndSounds\SelectSound.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\BigButton.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\BlueCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\Bomb.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\Braker.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\BrokeSteeringObj.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\Coin.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\GreenCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\OffColisionObj.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\OrangeCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\PinkCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\PlayerCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\SmallButton.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\Content\Sprites\YellowCar.xnb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\RoadRacesMVP.exe
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\RoadRacesMVP.deps.json
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\RoadRacesMVP.runtimeconfig.json
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\RoadRacesMVP.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\RoadRacesMVP.pdb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\MonoGame.Framework.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\SDL2.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\bin\Release\net6.0\win-x86\soft_oal.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.AssemblyInfo.cs
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRace.3CE7F47B.Up2Date
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\refint\RoadRacesMVP.dll
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.pdb
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\RoadRacesMVP.genruntimeconfig.cache
+C:\Users\User\OneDrive - УрФУ\Desktop\Files\УрФУ\Программирование 2 сем\RoadRacesMVP\RoadRacesMVP\obj\Release\net6.0\win-x86\ref\RoadRacesMVP.dll

@@ -22,77 +22,31 @@ namespace RoadRacesMVP
 
         private static Car CreateClassicCar(float x, float y)
         {
-            var width = Objects["Car"].width;
-            var height = Objects["Car"].height;
-            var car = new Car(new(x, y), width, height);
-            car.ImageId = Objects["Car"].type;
+            var car = new Car(new(x, y), Objects["Car"].width, Objects["Car"].height, Objects["Car"].type);
             car.ImageNumber = new Random().Next(0, 5);
             return car;
         }
 
-        private static Player CreatePlayerCar(float x, float y, Vector2 speed)
-        {
-            var width = Objects["PlayerCar"].width;
-            var height = Objects["PlayerCar"].height;
-            var playerCar = new Player(new(x, y), width, height);
-            playerCar.ImageId = Objects["PlayerCar"].type;
-            playerCar.Speed = speed;
-            return playerCar;
-        }
+        private static Player CreatePlayerCar(float x, float y) => 
+            new(new(x, y), Objects["PlayerCar"].width, Objects["PlayerCar"].height, Objects["PlayerCar"].type);
 
-        private static Wall CreateWall(float x, float y)
-        {
-            var width = Objects["Wall"].width;
-            var height = Objects["Wall"].height;            
-            var wall = new Wall(new(x, y), width, height);
-            wall.ImageId = Objects["Wall"].type;
-            return wall;
-        }
+        private static Wall CreateWall(float x, float y) =>
+            new(new(x, y), Objects["Wall"].width, Objects["Wall"].height, Objects["Wall"].type);
 
-        private static Coin CreateCoin(float x, float y)
-        {
-            var width = Objects["Coin"].width;
-            var height = Objects["Coin"].height;
-            var coin = new Coin(new(x, y), width, height);
-            coin.ImageId = Objects["Coin"].type;
-            return coin;
-        }
+        private static Coin CreateCoin(float x, float y) =>
+            new(new(x, y), Objects["Coin"].width, Objects["Coin"].height, Objects["Coin"].type);
 
-        private static Braker CreateBraker(float x, float y)
-        {
-            var width = Objects["Braker"].width;
-            var height = Objects["Braker"].height;
-            var braker = new Braker(new(x, y), width, height);
-            braker.ImageId = Objects["Braker"].type;
-            return braker;
-        }
+        private static Braker CreateBraker(float x, float y) =>
+            new(new(x, y), Objects["Braker"].width, Objects["Braker"].height, Objects["Braker"].type);
 
-        private static OffColisionObj CreateOffColisionObj(float x, float y)
-        {
-            var width = Objects["OffColisionObj"].width;
-            var height = Objects["OffColisionObj"].height;
-            var offColisionObj = new OffColisionObj(new(x, y), width, height);
-            offColisionObj.ImageId = Objects["OffColisionObj"].type;
-            return offColisionObj;
-        }
+        private static OffColisionObj CreateOffColisionObj(float x, float y) => 
+            new(new(x, y), Objects["OffColisionObj"].width, Objects["OffColisionObj"].height, Objects["OffColisionObj"].type);
 
-        private static BrokeSteeringObj CreateBrokeSteeringObj(float x, float y)
-        {
-            var width = Objects["BrokeSteeringObj"].width;
-            var height = Objects["BrokeSteeringObj"].height;
-            var brokeSteeringObj = new BrokeSteeringObj(new(x, y), width, height);
-            brokeSteeringObj.ImageId = Objects["BrokeSteeringObj"].type;
-            return brokeSteeringObj;
-        }
+        private static BrokeSteeringObj CreateBrokeSteeringObj(float x, float y) =>
+            new(new(x, y), Objects["BrokeSteeringObj"].width, Objects["BrokeSteeringObj"].height, Objects["BrokeSteeringObj"].type);
 
-        private static Bomb CreateBomb(float x, float y)
-        {
-            var width = Objects["Bomb"].width;
-            var height = Objects["Bomb"].height;
-            var bomb = new Bomb(new(x, y), width, height);
-            bomb.ImageId = Objects["Bomb"].type;
-            return bomb;
-        }
+        private static Bomb CreateBomb(float x, float y) => 
+            new(new(x, y), Objects["Bomb"].width, Objects["Bomb"].height, Objects["Bomb"].type);
 
         public static IObject GenerateObject(char sign, float xTile, float yTile)
         {
@@ -106,7 +60,7 @@ namespace RoadRacesMVP
                     generatedObject = CreateClassicCar(x, y);
                     break;
                 case 'P':
-                    generatedObject = CreatePlayerCar(x + GameConstants.TileSize / 2, y, new(0, 0));
+                    generatedObject = CreatePlayerCar(x + GameConstants.TileSize / 2, y);
                     break;
                 case 'W':
                     generatedObject = CreateWall(x, y);

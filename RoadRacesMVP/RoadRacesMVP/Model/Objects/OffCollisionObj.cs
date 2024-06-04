@@ -10,6 +10,6 @@ namespace RoadRacesMVP
 {
     public class OffColisionObj : CollectedObject, IObject
     {
-        public OffColisionObj(Vector2 position, int width, int height) : base(position, width, height) { }
+        public OffColisionObj(Vector2 position, int width, int height, int imageId) : base(position, width, height, imageId) { }
     }
 }

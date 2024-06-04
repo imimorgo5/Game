@@ -11,7 +11,8 @@ namespace RoadRacesMVP
     public class Car : IObject, ISolid
     {
         private Vector2 speed;
-        private double MaxSpeed;
+        private static int MaxDifficultSpeed { get => -15 - 3 * GameSettings.Difficult; }
+        private double MaxSpeed { get; set; }
         public Vector2 Position { get; private set; }
         public RectangleCollider Collider { get; private set; }
         public int ImageId { get; set; }
@@ -22,18 +23,18 @@ namespace RoadRacesMVP
         private HashSet<IObject> GameObjects { get; set; }
         private bool IsSteering {  get; set; }
         private float TargetPositionX { get; set; }
+        private float PlayerSpeedY {  get; set; }
 
-        public Car(Vector2 position, int width, int height)
+        public Car(Vector2 position, int width, int height, int imageId)
         {
             Position = position;
             Height = height;
             Width = width;
+            ImageId = imageId;
             Collider = new((int)Position.X, (int)Position.Y, Width, Height);
             IsColision = true;
-            Speed = new(0, -5);
-
-            var maxSpeed = -15 - 2 * GameSettings.Difficult;
-            MaxSpeed = new Random().Next(maxSpeed, -15);
+            Speed = new(0, PlayerSpeedY/2);
+            MaxSpeed = new Random().Next(MaxDifficultSpeed, -15);
         }
 
         public Vector2 Speed
@@ -51,15 +52,15 @@ namespace RoadRacesMVP
 
         public void MoveCollider() => Collider = new((int)Position.X, (int)Position.Y, Width, Height);
 
-        public void Update(Vector2 offset, HashSet<IObject> objects)
+        public void Update(Vector2 playerSpeed, HashSet<IObject> objects)
         {
+            PlayerSpeedY = playerSpeed.Y;
             GameObjects = objects;
             MoveIfCarAhead();
-            Move(Position + Speed + offset);
+            Move(Position + Speed - playerSpeed);
 
-            var maxSpeed = -15 - 2 * GameSettings.Difficult;
-            if (MaxSpeed < maxSpeed)
-                MaxSpeed = maxSpeed;
+            if (MaxSpeed < MaxDifficultSpeed)
+                MaxSpeed = MaxDifficultSpeed;
 
             if (Speed.Y > -10)
                 Speed += new Vector2(0, -0.05f);

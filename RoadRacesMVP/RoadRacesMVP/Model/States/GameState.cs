@@ -208,7 +208,7 @@ namespace RoadRacesMVP
             foreach (var i in Objects.Keys)
             {
                 var initPos = Objects[i].Position + playerShift;
-                Objects[i].Update(playerShift, Objects.Values.ToHashSet());
+                Objects[i].Update(-playerShift, Objects.Values.ToHashSet());
 
                 if (Objects[i] is CollectedObject collectedObj && collectedObj.IsCollected)
                     Objects.Remove(i);
@@ -222,14 +222,9 @@ namespace RoadRacesMVP
                     obj.Speed = Vector2.Zero;
 
             foreach (var i in collisionObjects.Keys)
-            {
                 foreach (var j in collisionObjects.Keys)
-                {
-                    if (i == j)
-                        continue;
-                    CalculateObstacleCollision((collisionObjects[i], i), (collisionObjects[j], j));
-                }
-            }
+                    if (i != j)
+                        CalculateObstacleCollision((collisionObjects[i], i), (collisionObjects[j], j));
 
             if ((Objects[PlayerId] as Player).CollisionCount == 3)
             {
@@ -293,7 +288,7 @@ namespace RoadRacesMVP
             }            
         }
 
-        private Vector2 GetOffset(Vector2 oppositeDirection)
+        private static Vector2 GetOffset(Vector2 oppositeDirection)
         {
             Vector2 offset;
             if (oppositeDirection.X == 0)

@@ -19,29 +19,25 @@ namespace RoadRacesMVP
         public bool IsCollected { get; set; }
         public RectangleCollider Collider { get; private set; }
 
-        public CollectedObject(Vector2 position, int width, int height)
+        public CollectedObject(Vector2 position, int width, int height, int imageId)
         {
             Position = position;
             Width = width;
             Height = height;
             IsCollected = false;
             ImageNumber = 0;
+            ImageId = imageId;
             Collider = new RectangleCollider((int)Position.X, (int)Position.Y, Width, Height);
         }
-        public void Update(Vector2 offset, HashSet<IObject> objects)
+
+        public void Update(Vector2 playerSpeed, HashSet<IObject> objects) => Move(Position - playerSpeed);
+
+        public void Move(Vector2 newPos)
         {
-            Move(Position + offset);
+            Position = newPos;
+            MoveRectangle();
         }
 
-        public void Move(Vector2 pos)
-        {
-            Position = pos;
-            MoveRectangle(Position);
-        }
-
-        public void MoveRectangle(Vector2 newPos)
-        {
-            Collider = new RectangleCollider((int)Position.X, (int)Position.Y, Width, Height);
-        }
+        public void MoveRectangle() => Collider = new RectangleCollider((int)Position.X, (int)Position.Y, Width, Height);
     }
 }
