@@ -14,22 +14,22 @@ namespace RoadRacesMVP
         public GameplayPresenter(IGameplayView view, State state)
         {
             GameSettings.Load();
-            ChangeState(view, state);
+            View = view;
+            ChangeState(state);
         }
 
-        private void ChangeState(IGameplayView view, State state)
+        private void ChangeState(State state)
         {
             Model = state;
-            View = view;
 
             if (state is GameState gameState)
             {
                 gameState.GameOver += GameOver;
                 gameState.PlaySound += PlaySound;
+                View.CurrentStateView.PlayerSpeedChanged += ViewModelMovePlayer;
             }
 
             View.CurrentStateView.ButtonClicked += ButtonAction;
-            View.CurrentStateView.PlayerSpeedChanged += ViewModelMovePlayer;
             View.CycleFinished += ViewStateUpdate;
             Model.UpdatedState += ModelViewUpdate;
 
@@ -47,7 +47,7 @@ namespace RoadRacesMVP
             View.ChangeStateView(ViewType.GameOverStateView);
             var gameOverState = new GameOverState();
             gameOverState.SetCounts(args.ScoreCount, args.CoinCount);
-            ChangeState(View, gameOverState);
+            ChangeState(gameOverState);
         }
 
         private void ButtonAction(object sender, ActionType actionType)
@@ -57,18 +57,18 @@ namespace RoadRacesMVP
             {
                 case ActionType.startGame:
                     View.ChangeStateView(ViewType.GameStateView);
-                    ChangeState(View, new GameState());
+                    ChangeState(new GameState());
                     PlaySound(this, SoundType.GameSong);
                     break;
 
                 case ActionType.settingsFromMenu:
                     View.ChangeStateView(ViewType.SettingsStateView);
-                    ChangeState(View, new SettingsFromMenuState());
+                    ChangeState(new SettingsFromMenuState());
                     break;
 
                 case ActionType.settingsFromPause:
                     View.ChangeStateView(ViewType.SettingsStateView);
-                    ChangeState(View, new SettingsFromPauseState((Model as PauseState).GetPauseArgs()));
+                    ChangeState(new SettingsFromPauseState((Model as PauseState).GetPauseArgs()));
                     break;
 
                 case ActionType.quitGame:
@@ -78,12 +78,12 @@ namespace RoadRacesMVP
 
                 case ActionType.quitToMenu:
                     View.ChangeStateView(ViewType.MainMenuStateView);
-                    ChangeState(View, new MainMenuState());
+                    ChangeState(new MainMenuState());
                     break;
 
                 case ActionType.quitToMenuFromGame:
                     View.ChangeStateView(ViewType.MainMenuStateView);
-                    ChangeState(View, new MainMenuState());
+                    ChangeState(new MainMenuState());
                     PlaySound(this, SoundType.MenuSong);
                     break;
 
@@ -96,17 +96,17 @@ namespace RoadRacesMVP
                     else if (Model is SettingsFromPauseState settings)
                         args = settings.GetPauseArgs();
 
-                    ChangeState(View, new PauseState(args));
+                    ChangeState(new PauseState(args));
                     break;
 
                 case ActionType.continueGame:
                     View.ChangeStateView(ViewType.GameStateView);
-                    ChangeState(View, new GameState((Model as PauseState).GetPauseArgs()));
+                    ChangeState(new GameState((Model as PauseState).GetPauseArgs()));
                     break;
 
                 case ActionType.rules:
                     View.ChangeStateView(ViewType.RulesStateView);
-                    ChangeState(View, new RulesState());
+                    ChangeState(new RulesState());
                     break;
 
                 case ActionType.resetRecordScore:

@@ -117,7 +117,7 @@ namespace RoadRacesMVP
 
         public PauseArgs GetPauseArgs() => new() { GameObjects = Objects.Values.ToHashSet(), ScoreCount = ScoreCount, POVShift = POVShift, PositionOffset = PositionOffset };
 
-        private void GenerateRows(int count)
+        private void GenerateLines(int count)
         {
             for (var i = 0; i < count; i++)
             {
@@ -224,7 +224,7 @@ namespace RoadRacesMVP
             foreach (var i in collisionObjects.Keys)
                 foreach (var j in collisionObjects.Keys)
                     if (i != j)
-                        CalculateObstacleCollision((collisionObjects[i], i), (collisionObjects[j], j));
+                        CalculateCollision((collisionObjects[i], i), (collisionObjects[j], j));
 
             if ((Objects[PlayerId] as Player).CollisionCount == 3)
             {
@@ -241,7 +241,7 @@ namespace RoadRacesMVP
             Shift += (int)Math.Abs(playerShift.Y);
             if (Shift >= GameConstants.TileSize)
             {
-                GenerateRows((Shift + GameConstants.TileSize / 2) / GameConstants.TileSize);
+                GenerateLines((Shift + GameConstants.TileSize / 2) / GameConstants.TileSize);
                 AddToObjects();
                 Shift = 0;
             }
@@ -249,26 +249,26 @@ namespace RoadRacesMVP
             UpdatedState.Invoke(this, new() { Objects = Objects, Components = Components, POVShift = playerShift, PositionOffset = PositionOffset });
         }
 
-        private void CalculateObstacleCollision((Vector2 initPos, int Id) obj1, (Vector2 initPos, int Id) obj2)
+        private void CalculateCollision((Vector2 initPos, int Id) obj1, (Vector2 initPos, int Id) obj2)
         {
             var isCollided = false;
             if (Objects[obj1.Id] is ISolid sObj1 && Objects[obj2.Id] is ISolid sObj2)
             {
                 if (sObj1.IsColision && sObj2.IsColision || sObj1 is Wall || sObj2 is Wall)
                 {
-                    Vector2 oppositeDirection;
+                    Vector2 offset;
                     while (RectangleCollider.IsCollided(sObj1.Collider, sObj2.Collider))
                     {
                         isCollided = true;
                         if (obj1.initPos != Objects[obj1.Id].Position)
                         {
-                            oppositeDirection = Objects[obj1.Id].Position - obj1.initPos;
-                            Objects[obj1.Id].Move(Objects[obj1.Id].Position - GetOffset(oppositeDirection));
+                            offset = Objects[obj1.Id].Position - obj1.initPos;
+                            Objects[obj1.Id].Move(Objects[obj1.Id].Position - offset);
                         }
                         if (obj2.initPos != Objects[obj2.Id].Position)
                         {
-                            oppositeDirection = Objects[obj2.Id].Position - obj2.initPos;
-                            Objects[obj2.Id].Move(Objects[obj2.Id].Position - GetOffset(oppositeDirection));
+                            offset = Objects[obj2.Id].Position - obj2.initPos;
+                            Objects[obj2.Id].Move(Objects[obj2.Id].Position - offset);
                         }
                     }
                 }
@@ -286,18 +286,6 @@ namespace RoadRacesMVP
                     player.BecomeNotCollision();
                 }
             }            
-        }
-
-        private static Vector2 GetOffset(Vector2 oppositeDirection)
-        {
-            Vector2 offset;
-            if (oppositeDirection.X == 0)
-                offset = new(oppositeDirection.X, oppositeDirection.Y / Math.Abs(oppositeDirection.Y));
-            else if (oppositeDirection.Y == 0)
-                offset = new(oppositeDirection.X / Math.Abs(oppositeDirection.X), oppositeDirection.Y);
-            else
-                offset = new(oppositeDirection.X / Math.Abs(oppositeDirection.X), oppositeDirection.Y / Math.Abs(oppositeDirection.Y));
-            return offset;
         }
 
         public void ChangePlayerSpeed(Direction dir)
